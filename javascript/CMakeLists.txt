@@ -44,10 +44,16 @@ add_link_options(
     "SHELL:-s MODULARIZE=1"
     "SHELL:-s EXPORT_ES6=1"
     "SHELL:-s WASM=1"
-    "SHELL:-s TEXTDECODER=0"
+    "SHELL:-s TEXTDECODER=2"
+    "SHELL:-s WASM_ASYNC_COMPILATION=1"
+    "SHELL:-s WASM_BIGINT=1"
+    "SHELL:-s USE_ES6_IMPORT_META=1"
+    "SHELL:-s FETCH=1"
+    "SHELL:-s USE_CLOSURE_COMPILER=1"
+    "SHELL:-s INCOMING_MODULE_JS_API=['instantiateWasm']"
     # SINGLE_FILE=1 combined with ENVIRONMENT='web' creates code that works on
     # both bundlders and Node.
-    "SHELL:-s SINGLE_FILE=1"
+    "SHELL:-s SINGLE_FILE=0"
     "SHELL:-s ENVIRONMENT='web'")
 
 link_libraries(embind)
@@ -56,4 +62,4 @@ add_library(yogaObjLib OBJECT ${SOURCES})
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/binaries)
 
-add_executable(yoga-wasm-base64-esm $<TARGET_OBJECTS:yogaObjLib>)
+add_executable(yoga $<TARGET_OBJECTS:yogaObjLib>)

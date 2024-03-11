@@ -12,10 +12,7 @@ module.exports = api => ({
     [
       '@babel/preset-env',
       {
-        targets: [
-          'maintained node versions',
-          '> 0.5%, last 2 versions, Firefox ESR, not dead',
-        ],
+        targets: ['last 1 Chrome versions'],
         // Do not transform to another module system
         modules: false,
       },
